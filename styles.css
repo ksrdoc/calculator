@@ -1,0 +1,83 @@
+body {
+  background-color: rgb(204, 231, 247);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(161, 161, 161);
+  width: 500px;
+  height: 700px;
+  border: 4px solid black;
+  border-radius: 30px;
+  margin-top: 50px;
+}
+
+footer {
+  margin-top: 100px;
+  font-size: large;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(224, 214, 214);
+  margin-top: 30px;
+  width: 420px;
+  height: 140px;
+  border: 2px solid black;
+  border-radius: 10px;
+  gap: 30px;
+}
+
+.screen-result {
+  font-size: 60px;
+  display: flex;
+  justify-content: right;
+  margin-right: 20px;
+}
+
+.screen-last {
+  font-size: 30px;
+  display: flex;
+  justify-content: right;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+.keyboard {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  flex: auto;
+}
+
+.numbers,
+.operators,
+#allClear,
+#clear,
+#dot {
+  width: 100px;
+  height: 95px;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 40px;
+}
+
+#equal {
+  width: 200px;
+  height: 95px;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 40px;
+}
