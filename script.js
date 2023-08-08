@@ -10,19 +10,23 @@ let localSum = "";
 // Operations
 
 const addition = function (a, b) {
-  return a + b;
+  return Math.round((a + b) * 100) / 100;
 };
 
 const substraction = function (a, b) {
-  return a - b;
+  return Math.round((a - b) * 100) / 100;
 };
 
 const multiply = function (a, b) {
-  return a * b;
+  return Math.round(a * b * 100) / 100;
 };
 
 const division = function (a, b) {
-  return a / b;
+  return Math.round((a / b) * 100) / 100;
+};
+
+const remainder = function (a, b) {
+  return Math.round((a % b) * 100) / 100;
 };
 
 const operate = function (firstNumber, operator, secondNumber) {
@@ -33,11 +37,13 @@ const operate = function (firstNumber, operator, secondNumber) {
       return addition(a, b);
     case "-":
       return substraction(a, b);
-    case "*":
+    case "x":
       return multiply(a, b);
-    case "/":
+    case "÷":
       if (b === 0) return null;
       else return division(a, b);
+    case "%":
+      return remainder(a, b);
     default:
       return null;
   }
@@ -88,7 +94,10 @@ const allClear = document.querySelector("#allClear");
 const clear = document.querySelector("#clear");
 const addKey = document.querySelector("#addition");
 const minusKey = document.querySelector("#subtraction");
+const multiplyKey = document.querySelector("#multiply");
 const equalKey = document.querySelector("#equal");
+const divisionKey = document.querySelector("#division");
+const remainderKey = document.querySelector("#remainder");
 
 //Event listeners
 
@@ -130,6 +139,33 @@ addKey.addEventListener("click", function () {
   //}
 });
 minusKey.addEventListener("click", function () {
+  if (lastResult.textContent === "") {
+    lastResult.textContent = `${result.textContent} ${this.textContent}`;
+    firstNumber = Number(result.textContent);
+    result.textContent = "";
+    operator = this.textContent;
+  }
+});
+
+multiplyKey.addEventListener("click", function () {
+  if (lastResult.textContent === "") {
+    lastResult.textContent = `${result.textContent} ${this.textContent}`;
+    firstNumber = Number(result.textContent);
+    result.textContent = "";
+    operator = this.textContent;
+  }
+});
+
+divisionKey.addEventListener("click", function () {
+  if (lastResult.textContent === "") {
+    lastResult.textContent = `${result.textContent} ${this.textContent}`;
+    firstNumber = Number(result.textContent);
+    result.textContent = "";
+    operator = this.textContent;
+  }
+});
+
+remainderKey.addEventListener("click", function () {
   if (lastResult.textContent === "") {
     lastResult.textContent = `${result.textContent} ${this.textContent}`;
     firstNumber = Number(result.textContent);
