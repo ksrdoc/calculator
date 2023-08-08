@@ -40,7 +40,7 @@ const operate = function (firstNumber, operator, secondNumber) {
     case "x":
       return multiply(a, b);
     case "÷":
-      if (b === 0) return null;
+      if (b === 0) return null, alert("LOL no");
       else return division(a, b);
     case "%":
       return remainder(a, b);
@@ -121,22 +121,21 @@ addKey.addEventListener("click", function () {
     firstNumber = Number(result.textContent);
     result.textContent = "";
     operator = this.textContent;
-  } //else {
-  //lastResult.textContent = "";
-  // secondNumber = Number(result.textContent);
-  //lastResult.textContent = operate(
-  //   firstNumber,
-  //   this.textContent,
-  //   secondNumber
-  //);
-  // localSum = Number(lastResult.textContent);
-  // console.log(secondNumber);
-  // operator = this.textContent;
-  // result.textContent = "";
-  // result.textContent = Number(localSum);
-  // secondNumber = "";
-  // firstNumber = Number(localSum);
-  //}
+    localSum = firstNumber;
+  } else {
+    lastResult.textContent = "";
+    secondNumber = Number(result.textContent);
+    lastResult.textContent = `${this.textContent} ${operate(
+      localSum,
+      this.textContent,
+      secondNumber
+    )}`;
+    localSum = operate(localSum, this.textContent, secondNumber);
+    operator = this.textContent;
+    result.textContent = "";
+    secondNumber = "";
+    firstNumber = Number(localSum);
+  }
 });
 minusKey.addEventListener("click", function () {
   if (lastResult.textContent === "") {
@@ -179,11 +178,13 @@ equalKey.addEventListener("click", function () {
     console.log("Calculation is done");
   } else {
     secondNumber = Number(result.textContent);
-    lastResult.textContent += ` ${secondNumber} =`;
+    lastResult.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
     result.textContent = "";
     result.textContent = operate(firstNumber, operator, secondNumber);
-    firstNumber = Number(result.textContent);
     secondNumber = "";
+    localSum = Number(result.textContent);
+    firstNumber = localSum;
+    console.log("LocalSum is:", localSum);
   }
 });
 
