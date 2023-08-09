@@ -74,10 +74,29 @@ footer {
   font-size: 40px;
 }
 
+#clear,
+#allClear {
+  background-color: rgb(223, 0, 0);
+  color: whitesmoke;
+}
+
 #equal {
   width: 200px;
   height: 95px;
   border: 2px solid black;
   border-radius: 20px;
   font-size: 40px;
+}
+
+#equal:active,
+.numbers:active,
+.operators:active,
+#allClear:active,
+#clear:active,
+#dot:active {
+  filter: brightness(80%);
+}
+
+.hoverDarken {
+  filter: brightness(90%);
 }
