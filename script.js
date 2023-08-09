@@ -75,6 +75,52 @@ const clearFoo = function () {
   result.textContent = result.textContent.slice(0, -1);
 };
 
+const calculate = function () {
+  if (lastResult.textContent === "") {
+    // this can be put in a function no prob
+    lastResult.textContent = `${result.textContent} ${this.textContent}`;
+    firstNumber = Number(result.textContent);
+    result.textContent = "";
+    operator = this.textContent;
+    localSum = firstNumber;
+  } else if (lastResult.textContent.includes("=")) {
+    firstNumber = Number(result.textContent);
+    localSum = firstNumber;
+    secondNumber = "";
+    lastResult.textContent = `${this.textContent} ${firstNumber}`;
+    result.textContent = "";
+    operator = this.textContent;
+  } else {
+    lastResult.textContent = "";
+    secondNumber = Number(result.textContent);
+    lastResult.textContent = `${this.textContent} ${operate(
+      localSum,
+      this.textContent,
+      secondNumber
+    )}`;
+    localSum = operate(localSum, this.textContent, secondNumber);
+    operator = this.textContent;
+    result.textContent = "";
+    secondNumber = "";
+    firstNumber = Number(localSum);
+  }
+};
+
+const equasion = function () {
+  if (lastResult.textContent.includes("=") === true) {
+    console.log("Calculation is done");
+  } else {
+    secondNumber = Number(result.textContent);
+    lastResult.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
+    result.textContent = "";
+    result.textContent = operate(firstNumber, operator, secondNumber);
+    secondNumber = "";
+    localSum = Number(result.textContent);
+    firstNumber = localSum;
+    console.log("LocalSum is:", localSum);
+  }
+};
+
 //Selectors
 
 const dot = document.querySelector("#dot");
@@ -114,78 +160,12 @@ numberNine.addEventListener("click", appendNumber);
 dot.addEventListener("click", appendDot);
 allClear.addEventListener("click", allClearFoo);
 clear.addEventListener("click", clearFoo);
-addKey.addEventListener("click", function () {
-  if (lastResult.textContent === "") {
-    // this can be put in a function no prob
-    lastResult.textContent = `${result.textContent} ${this.textContent}`;
-    firstNumber = Number(result.textContent);
-    result.textContent = "";
-    operator = this.textContent;
-    localSum = firstNumber;
-  } else {
-    lastResult.textContent = "";
-    secondNumber = Number(result.textContent);
-    lastResult.textContent = `${this.textContent} ${operate(
-      localSum,
-      this.textContent,
-      secondNumber
-    )}`;
-    localSum = operate(localSum, this.textContent, secondNumber);
-    operator = this.textContent;
-    result.textContent = "";
-    secondNumber = "";
-    firstNumber = Number(localSum);
-  }
-});
-minusKey.addEventListener("click", function () {
-  if (lastResult.textContent === "") {
-    lastResult.textContent = `${result.textContent} ${this.textContent}`;
-    firstNumber = Number(result.textContent);
-    result.textContent = "";
-    operator = this.textContent;
-  }
-});
 
-multiplyKey.addEventListener("click", function () {
-  if (lastResult.textContent === "") {
-    lastResult.textContent = `${result.textContent} ${this.textContent}`;
-    firstNumber = Number(result.textContent);
-    result.textContent = "";
-    operator = this.textContent;
-  }
-});
-
-divisionKey.addEventListener("click", function () {
-  if (lastResult.textContent === "") {
-    lastResult.textContent = `${result.textContent} ${this.textContent}`;
-    firstNumber = Number(result.textContent);
-    result.textContent = "";
-    operator = this.textContent;
-  }
-});
-
-remainderKey.addEventListener("click", function () {
-  if (lastResult.textContent === "") {
-    lastResult.textContent = `${result.textContent} ${this.textContent}`;
-    firstNumber = Number(result.textContent);
-    result.textContent = "";
-    operator = this.textContent;
-  }
-});
-
-equalKey.addEventListener("click", function () {
-  if (lastResult.textContent.includes("=") === true) {
-    console.log("Calculation is done");
-  } else {
-    secondNumber = Number(result.textContent);
-    lastResult.textContent = `${firstNumber} ${operator} ${secondNumber} =`;
-    result.textContent = "";
-    result.textContent = operate(firstNumber, operator, secondNumber);
-    secondNumber = "";
-    localSum = Number(result.textContent);
-    firstNumber = localSum;
-    console.log("LocalSum is:", localSum);
-  }
-});
+addKey.addEventListener("click", calculate);
+minusKey.addEventListener("click", calculate);
+multiplyKey.addEventListener("click", calculate);
+divisionKey.addEventListener("click", calculate);
+remainderKey.addEventListener("click", calculate);
+equalKey.addEventListener("click", equasion);
 
 // start implementing functions for operators
