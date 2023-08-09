@@ -59,6 +59,13 @@ const appendNumber = function () {
   result.textContent += Number(this.textContent);
 };
 
+/*const appendNumberKey = (e) => {
+  console.log("hey");
+  e.key === "1"
+    ? console.log("heyhey")
+    : (result.textContent += Number(this.textContent)); 
+}; */
+
 const appendDot = function () {
   if (!result.textContent.includes(".")) {
     result.textContent += ".";
@@ -140,6 +147,7 @@ const operators = document.querySelectorAll(".operators");
 numbers.forEach((number) => number.addEventListener("click", appendNumber));
 numbers.forEach((number) => number.addEventListener("mouseover", hoverDarken));
 numbers.forEach((number) => number.addEventListener("mouseleave", hoverDarken));
+
 operators.forEach((operator) => operator.addEventListener("click", calculate));
 operators.forEach((operator) =>
   operator.addEventListener("mouseover", hoverDarken)
@@ -147,6 +155,7 @@ operators.forEach((operator) =>
 operators.forEach((operator) =>
   operator.addEventListener("mouseleave", hoverDarken)
 );
+
 dot.addEventListener("click", appendDot);
 dot.addEventListener("mouseover", hoverDarken);
 dot.addEventListener("mouseleave", hoverDarken);
