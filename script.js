@@ -124,48 +124,19 @@ const equasion = function () {
 //Selectors
 
 const dot = document.querySelector("#dot");
-const numberZero = document.querySelector("#numZero");
-const numberOne = document.querySelector("#numOne");
-const numberTwo = document.querySelector("#numTwo");
-const numberThree = document.querySelector("#numThree");
-const numberFour = document.querySelector("#numFour");
-const numberFive = document.querySelector("#numFive");
-const numberSix = document.querySelector("#numSix");
-const numberSeven = document.querySelector("#numSeven");
-const numberEight = document.querySelector("#numEight");
-const numberNine = document.querySelector("#numNine");
 const result = document.querySelector(".screen-result");
 const lastResult = document.querySelector(".screen-last");
 const allClear = document.querySelector("#allClear");
 const clear = document.querySelector("#clear");
-const addKey = document.querySelector("#addition");
-const minusKey = document.querySelector("#subtraction");
-const multiplyKey = document.querySelector("#multiply");
 const equalKey = document.querySelector("#equal");
-const divisionKey = document.querySelector("#division");
-const remainderKey = document.querySelector("#remainder");
+const numbers = document.querySelectorAll(".numbers");
+const operators = document.querySelectorAll(".operators");
 
 //Event listeners
 
-numberZero.addEventListener("click", appendNumber);
-numberOne.addEventListener("click", appendNumber);
-numberTwo.addEventListener("click", appendNumber);
-numberThree.addEventListener("click", appendNumber);
-numberFour.addEventListener("click", appendNumber);
-numberFive.addEventListener("click", appendNumber);
-numberSix.addEventListener("click", appendNumber);
-numberSeven.addEventListener("click", appendNumber);
-numberEight.addEventListener("click", appendNumber);
-numberNine.addEventListener("click", appendNumber);
+numbers.forEach((number) => number.addEventListener("click", appendNumber));
+operators.forEach((operator) => operator.addEventListener("click", calculate));
 dot.addEventListener("click", appendDot);
 allClear.addEventListener("click", allClearFoo);
 clear.addEventListener("click", clearFoo);
-
-addKey.addEventListener("click", calculate);
-minusKey.addEventListener("click", calculate);
-multiplyKey.addEventListener("click", calculate);
-divisionKey.addEventListener("click", calculate);
-remainderKey.addEventListener("click", calculate);
 equalKey.addEventListener("click", equasion);
-
-// start implementing functions for operators
