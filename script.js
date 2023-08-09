@@ -51,6 +51,10 @@ const operate = function (firstNumber, operator, secondNumber) {
 
 //Functions
 
+const hoverDarken = function () {
+  this.classList.toggle("hoverDarken");
+};
+
 const appendNumber = function () {
   result.textContent += Number(this.textContent);
 };
@@ -117,7 +121,6 @@ const equasion = function () {
     secondNumber = "";
     localSum = Number(result.textContent);
     firstNumber = localSum;
-    console.log("LocalSum is:", localSum);
   }
 };
 
@@ -135,8 +138,24 @@ const operators = document.querySelectorAll(".operators");
 //Event listeners
 
 numbers.forEach((number) => number.addEventListener("click", appendNumber));
+numbers.forEach((number) => number.addEventListener("mouseover", hoverDarken));
+numbers.forEach((number) => number.addEventListener("mouseleave", hoverDarken));
 operators.forEach((operator) => operator.addEventListener("click", calculate));
+operators.forEach((operator) =>
+  operator.addEventListener("mouseover", hoverDarken)
+);
+operators.forEach((operator) =>
+  operator.addEventListener("mouseleave", hoverDarken)
+);
 dot.addEventListener("click", appendDot);
+dot.addEventListener("mouseover", hoverDarken);
+dot.addEventListener("mouseleave", hoverDarken);
 allClear.addEventListener("click", allClearFoo);
+allClear.addEventListener("mouseover", hoverDarken);
+allClear.addEventListener("mouseleave", hoverDarken);
 clear.addEventListener("click", clearFoo);
+clear.addEventListener("mouseover", hoverDarken);
+clear.addEventListener("mouseleave", hoverDarken);
 equalKey.addEventListener("click", equasion);
+equalKey.addEventListener("mouseover", hoverDarken);
+equalKey.addEventListener("mouseleave", hoverDarken);
